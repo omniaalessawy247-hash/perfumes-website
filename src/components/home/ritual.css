@@ -1,0 +1,172 @@
+.ritual {
+  padding: clamp(40px, 5vw, 80px) var(--gutter) clamp(36px, 4.5vw, 72px);
+}
+.ritual-head {
+  display: grid;
+  gap: 16px;
+  max-width: 900px;
+}
+.ritual-head h2 {
+  font-size: clamp(40px, 6vw, 96px);
+}
+.ritual-head h2 em {
+  color: var(--accent);
+  font-style: italic;
+}
+.ritual-lead {
+  max-width: 460px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.3vw, 19px);
+}
+.ritual-rule {
+  height: 1px;
+  margin: clamp(24px, 3vw, 44px) 0;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 10%, transparent));
+}
+.tiles {
+  display: grid;
+  gap: clamp(36px, 5vw, 88px);
+}
+.tile {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(60px, 1.2fr) minmax(0, 5fr);
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+}
+.tile:nth-child(even) .tile-frame {
+  order: 3;
+}
+.tile:nth-child(even) .tile-arrow {
+  order: 2;
+  flex-direction: row-reverse;
+}
+.tile:nth-child(even) .tile-body {
+  order: 1;
+  text-align: right;
+  justify-items: end;
+}
+.tile-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  width: 100%;
+  max-height: 78svh;
+  aspect-ratio: 4 / 5;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 40px 70px -46px color-mix(in srgb, var(--text) 60%, transparent);
+  background: color-mix(in srgb, var(--text) 8%, var(--bg));
+}
+.tile-wide .tile-frame {
+  aspect-ratio: 3 / 2;
+}
+.tile-frame img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tile-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / 0.26) 50%, transparent 65%);
+  transform: translateX(-130%);
+  transition: transform 1.3s var(--ease-out);
+  pointer-events: none;
+}
+.tile:hover .tile-shine {
+  transform: translateX(130%);
+}
+.tile-arrow {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+}
+.tile-arrow-line {
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+.tile-arrow-head {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: background-color 0.4s, color 0.4s, transform 0.5s var(--ease-out);
+}
+.tile:nth-child(even) .tile-arrow-head {
+  transform: scaleX(-1);
+}
+.tile:hover .tile-arrow-head {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.tile-body {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+.tile-no {
+  font-size: clamp(56px, 7vw, 110px);
+  line-height: 0.9;
+  color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+.tile-kicker {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.tile h3 {
+  font-size: clamp(28px, 3.4vw, 54px);
+}
+.tile-text {
+  color: var(--muted);
+  max-width: 380px;
+  font-size: clamp(16px, 1.3vw, 19px);
+}
+.perks {
+  list-style: none;
+  margin: clamp(28px, 3.4vw, 48px) 0 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px clamp(20px, 3.5vw, 56px);
+}
+.perk {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16px, 1.5vw, 21px);
+}
+.perk i {
+  width: 8px;
+  height: 8px;
+  rotate: 45deg;
+  background: var(--accent);
+}
+.ritual-cta {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+@media (max-width: 800px) {
+  .tile {
+    grid-template-columns: 1fr;
+  }
+  .tile:nth-child(even) .tile-frame,
+  .tile:nth-child(even) .tile-arrow,
+  .tile:nth-child(even) .tile-body {
+    order: 0;
+    text-align: left;
+    justify-items: start;
+  }
+  .tile-arrow {
+    display: none;
+  }
+}

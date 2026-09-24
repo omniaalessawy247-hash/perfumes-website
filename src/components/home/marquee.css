@@ -1,0 +1,30 @@
+.marquee {
+  overflow: hidden;
+  padding: 16px 0;
+  border-block: 1px solid var(--line);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
+  font-size: clamp(28px, 4vw, 56px);
+  font-style: italic;
+  white-space: nowrap;
+}
+.marquee-item i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

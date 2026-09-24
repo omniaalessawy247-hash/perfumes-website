@@ -1,0 +1,529 @@
+.hero {
+  --bh: min(76svh, 720px);
+  --bo: 0px;
+  position: relative;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.h-layer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.h-dust {
+  /* Image 08 fills (and overscans) the whole hero: much larger than the
+     bottle, uncropped by the bottle's own box, never stretched. */
+  inset: auto;
+  left: -8%;
+  top: -14%;
+  width: 116%;
+  height: 130%;
+  background: var(--liquid);
+  opacity: 0;
+  z-index: 1;
+}
+/* Two classes so it beats .lum-mask (index.css loads last) */
+.h-dust.lum-mask {
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+.h-discover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: clamp(72px, 17vw, 300px);
+  line-height: 0.86;
+  color: color-mix(in srgb, var(--accent) 26%, var(--bg));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.h-glow {
+  z-index: 2;
+  width: min(80vw, 900px);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--liquid) 85%, transparent) 0%, transparent 65%);
+  opacity: 0;
+}
+
+.h-title {
+  position: absolute;
+  left: var(--gutter);
+  /* Clamped so the block always clears the fixed header, at every viewport
+     height, instead of centering at 50% and risking an overlap. */
+  top: clamp(calc(var(--header-h) + 28px), 34vh, 50vh);
+  z-index: 3;
+  pointer-events: none;
+}
+.h-title h1 {
+  font-size: clamp(56px, 9vw, 150px);
+}
+
+.h-bottle {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  perspective: 1200px;
+  pointer-events: none;
+  will-change: transform;
+}
+.h-tilt {
+  transform-style: preserve-3d;
+}
+.h-float {
+  position: relative;
+  height: var(--bh);
+  aspect-ratio: 4 / 5;
+  animation: hero-float 6s ease-in-out infinite;
+}
+.h-float img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 40px rgb(46 37 33 / 0.22));
+}
+.h-open {
+  opacity: 0;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Liquid ribbon: back copy behind the bottle, masked copy in front */
+.h-rib {
+  --rib: min(calc(var(--bh) * 0.85), 100vw);
+  top: calc(50% + var(--bo));
+  width: calc(var(--rib) * 1.15);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+}
+.h-rib-tilt {
+  width: calc(100% / 1.15);
+  height: calc(100% / 1.15);
+  animation: rib-sway 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+.h-rib-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  animation: rib-flow 34s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+.h-rib-back {
+  z-index: 3;
+}
+.h-rib-front {
+  z-index: 5;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 46%, #000 62%);
+  mask-image: linear-gradient(to bottom, transparent 46%, #000 62%);
+}
+@keyframes rib-flow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rib-sway {
+  from {
+    transform: perspective(1100px) rotateX(14deg) rotateY(-16deg);
+  }
+  to {
+    transform: perspective(1100px) rotateX(24deg) rotateY(-3deg);
+  }
+}
+
+/* Finale: the four perfumes side by side, each with its own ingredients */
+.h-line {
+  visibility: hidden;
+  --bhh: min(54svh, 25vw);
+  --d: var(--bhh);
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  padding: calc(var(--header-h) + 8svh) var(--gutter) 6svh;
+  pointer-events: none;
+}
+.h-fig {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  justify-self: center;
+  gap: 12px;
+  width: var(--d);
+  opacity: 0;
+}
+.h-fig-main {
+  pointer-events: auto;
+  cursor: pointer;
+}
+.h-fig-stage {
+  position: relative;
+  width: var(--d);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+.h-fig-bottle {
+  position: relative;
+  height: var(--bhh);
+  width: auto;
+  filter: drop-shadow(0 18px 22px rgb(46 37 33 / 0.28));
+}
+.h-fig-ing {
+  position: absolute;
+  width: 32%;
+  translate: -50% -50%;
+}
+.h-fig-ing img {
+  width: 100%;
+  height: auto;
+  will-change: transform;
+}
+.h-fig-name.serif {
+  font-size: clamp(16px, 1.6vw, 26px);
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+/* Closing colour field: keeps the bottle inside the perfume's atmosphere
+   once the hero content has finished. */
+.h-atmos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse 62% 56% at 50% 56%, color-mix(in srgb, var(--liquid) 70%, transparent) 0%, transparent 72%),
+    linear-gradient(to top, color-mix(in srgb, var(--accent) 30%, var(--bg)) 0%, transparent 58%);
+}
+
+.h-label {
+  position: absolute;
+  z-index: 8;
+  display: grid;
+  gap: 2px;
+  padding-left: 18px;
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.2vw, 30px);
+  border-left: 1px solid var(--accent);
+  opacity: 0;
+  transform: translateY(20px);
+}
+.h-label span {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.h-label-top {
+  left: 12vw;
+  top: 26vh;
+}
+.h-label-heart {
+  right: 12vw;
+  top: 34vh;
+}
+.h-label-base {
+  left: 18vw;
+  bottom: 20vh;
+}
+
+.h-sub {
+  position: absolute;
+  right: var(--gutter);
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 9;
+  max-width: 320px;
+  display: grid;
+  gap: 28px;
+}
+.h-sub p {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 28px);
+  line-height: 1.25;
+  font-weight: 300;
+}
+.h-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.h-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  translate: -50% 0;
+  z-index: 9;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.h-cue::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 36px;
+  margin: 10px auto 0;
+  background: currentColor;
+  transform-origin: top;
+  animation: cue 1.8s var(--ease) infinite;
+}
+@keyframes cue {
+  0% {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(1);
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+.h-outro {
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  white-space: nowrap;
+  text-shadow: 0 2px 30px rgb(255 255 255 / 0.5);
+  z-index: 9;
+  text-align: center;
+  display: flex;
+  gap: 0.4em;
+  font-size: clamp(30px, 5vw, 84px);
+  opacity: 0;
+}
+
+@media (max-width: 767px), (max-width: 1100px) and (orientation: portrait) {
+  .hero {
+    --bh: clamp(180px, calc(100svh - 440px), min(520px, 90vw));
+    --bo: 0px;
+  }
+  .h-title {
+    top: calc(var(--header-h) + 12px);
+  }
+  .h-title h1 {
+    font-size: clamp(38px, 11vw, 84px);
+  }
+  .h-discover {
+    /* Was up to 300px, which overwhelmed a phone-width viewport and
+       crowded into the ribbon/labels around it. */
+    font-size: clamp(48px, 13vw, 170px);
+  }
+  .h-float {
+    translate: 0 var(--bo);
+  }
+  .h-sub {
+    right: var(--gutter);
+    left: var(--gutter);
+    top: auto;
+    bottom: 96px;
+    translate: none;
+    max-width: none;
+    gap: 14px;
+  }
+  .h-sub p {
+    display: none;
+  }
+  .h-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .h-actions .btn {
+    min-height: 46px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+  .h-actions .btn:first-child {
+    grid-column: 1 / -1;
+  }
+  .h-cue {
+    bottom: 20px;
+  }
+  .h-label {
+    /* Smaller and tighter so the three note labels stop crowding each
+       other and the bottle on narrow screens. */
+    font-size: clamp(14px, 3.6vw, 19px);
+    padding-left: 12px;
+  }
+  .h-label span {
+    font-size: 10px;
+  }
+  .h-label-top {
+    left: 6vw;
+    top: 18vh;
+  }
+  .h-label-heart {
+    right: 6vw;
+    top: 30vh;
+  }
+  .h-label-base {
+    left: 8vw;
+    bottom: 27vh;
+  }
+  .h-ing {
+    /* Was capped at 44vw, still large enough to overlap heavily on a
+       phone screen once several particles burst out at once. */
+    max-width: 28vw !important;
+    max-height: 28vw !important;
+  }
+  .h-outro {
+    font-size: clamp(28px, 7.5vw, 48px);
+  }
+  .h-line {
+    --bhh: min(22svh, 30vw);
+    grid-template-columns: 1fr 1fr;
+    row-gap: 6svh;
+    align-content: center;
+    padding: calc(var(--header-h) + 10svh) 4vw 4svh;
+  }
+  .h-outro {
+    font-size: clamp(22px, 6vw, 40px);
+  }
+}
+
+@media (max-width: 430px) {
+  .h-discover {
+    font-size: clamp(40px, 12vw, 120px);
+  }
+  .h-ing {
+    max-width: 24vw !important;
+    max-height: 24vw !important;
+  }
+  .h-label {
+    font-size: 13px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    --bh: 62svh;
+    min-height: 0;
+  }
+  .h-title {
+    top: calc(var(--header-h) + 4px);
+  }
+  .h-title h1 {
+    font-size: clamp(32px, 7vw, 56px);
+  }
+  .h-sub {
+    left: auto;
+    top: 50%;
+    bottom: auto;
+    translate: 0 -50%;
+    max-width: 200px;
+  }
+  .h-actions {
+    grid-template-columns: 1fr;
+  }
+  .h-cue {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .h-float {
+    animation: none;
+  }
+}
+
+.h-ing {
+  opacity: 0;
+  display: grid;
+  place-items: center;
+}
+.h-ing img {
+  /* Square stage keeps every ingredient the same visual size */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Cinematic finish for the four-perfume finale */
+.h-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(ellipse 75% 65% at 50% 52%, transparent 55%, rgb(46 30 20 / 0.32) 100%);
+}
+.h-line .h-line-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(var(--header-h) + 3svh);
+  text-align: center;
+  font-size: clamp(26px, 3.4vw, 54px);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  opacity: 0;
+}
+.h-fig-stage::before {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--g) 70%, transparent) 0%, transparent 66%);
+  filter: blur(6px);
+}
+.h-fig-stage::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 3%;
+  height: 7%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(46 30 20 / 0.42), transparent 70%);
+  filter: blur(4px);
+}
+.h-fig-bottle {
+  z-index: 1;
+}
+.h-fig-ing {
+  z-index: 2;
+}

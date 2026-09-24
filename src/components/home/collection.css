@@ -1,0 +1,149 @@
+.collection {
+  padding: clamp(28px, 3.6vw, 56px) clamp(16px, 4vw, 72px) 0;
+}
+.collection .section-head {
+  padding-inline: var(--gutter);
+}
+.section-head {
+  display: grid;
+  gap: 16px;
+  max-width: 900px;
+  margin-bottom: clamp(20px, 3vw, 40px);
+}
+.section-head h2 {
+  font-size: clamp(40px, 6vw, 96px);
+}
+
+.panels {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  height: min(86vh, 800px);
+}
+.panel {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  /* minmax(0, 1fr) lets the image row shrink */
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  padding: clamp(20px, 2vw, 32px);
+  border-radius: 40px;
+  overflow: hidden;
+  transition: flex 0.9s var(--ease);
+}
+.panels:hover .panel {
+  flex: 0.72;
+}
+.panels .panel:hover {
+  flex: 1.9;
+}
+.panel-glow {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  width: 90%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--liquid) 70%, transparent), transparent 66%);
+  opacity: 0.5;
+  transition: opacity 0.8s, scale 0.9s var(--ease);
+}
+.panel:hover .panel-glow {
+  opacity: 1;
+  scale: 1.25;
+}
+.panel-head {
+  position: relative;
+  display: grid;
+  gap: 6px;
+}
+.panel-head h3 {
+  font-size: clamp(28px, 3vw, 48px);
+  white-space: nowrap;
+}
+.panel-head p {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 260px;
+}
+/* Image wrapper owns the sizing */
+.panel-image {
+  position: relative;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Room for the hover scale/lift below to move within, so it never
+     needs to escape this box and reach the footer. */
+  overflow: visible;
+}
+.panel-bottle {
+  max-width: 100%;
+  max-height: 100%;
+  max-height: min(100%, 62vh);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.9s var(--ease);
+  filter: drop-shadow(0 26px 30px rgb(0 0 0 / 0.18));
+}
+.panel:hover .panel-bottle {
+  /* Kept modest and vertical-only so the enlarged bottle stays inside
+     .panel-image instead of growing into the header or footer. */
+  transform: translateY(-8px) scale(1.03) rotate(-2deg);
+}
+.panel-foot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+  /* Never let the grid shrink the footer row away, whatever the image
+     row above is doing. */
+  align-self: end;
+}
+.panel-foot p {
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.panel-price {
+  font-weight: 500;
+}
+.panel-open {
+  justify-self: start;
+  flex-shrink: 0;
+  margin-top: 8px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--text);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background-color 0.3s, color 0.3s;
+}
+.panel:hover .panel-open {
+  background: var(--text);
+  color: var(--bg);
+}
+
+@media (max-width: 900px) {
+  .panels {
+    flex-direction: column;
+    height: auto;
+  }
+  .panel,
+  .panels:hover .panel,
+  .panels .panel:hover {
+    flex: none;
+    height: clamp(420px, 68svh, 560px);
+  }
+}
+
+.section-lead {
+  max-width: 460px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.3vw, 19px);
+}
