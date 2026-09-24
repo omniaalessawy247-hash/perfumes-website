@@ -4,7 +4,13 @@
 
 <p><i>Four perfumes, each with its own colour, mood and story.</i></p>
 
-<p><b>A cinematic perfume storefront with a scroll-driven hero, a theme that changes with every perfume, and a secure order pipeline behind it.</b></p>
+<p><b>A cinematic perfume storefront with a scroll-driven hero, a theme that changes with every perfume,<br />and a secure order pipeline behind it.</b></p>
+
+<p>
+  <a href="https://perfumes-website-three.vercel.app">
+    <img src="https://img.shields.io/badge/Live_demo-perfumes--website--three.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo" />
+  </a>
+</p>
 
 <p>
   <img src="https://img.shields.io/badge/AMBRE-D9902F?style=for-the-badge" alt="AMBRE" />
@@ -19,6 +25,7 @@
   <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
   <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black" alt="GSAP" />
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
 </p>
 
 <p>
@@ -30,10 +37,11 @@
   <a href="#overview">Overview</a> ·
   <a href="#demo">Demo</a> ·
   <a href="#screenshots">Screenshots</a> ·
-  <a href="#features">Features</a> ·
+  <a href="#the-experience">Experience</a> ·
   <a href="#brand-identity">Brand</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#getting-started">Getting Started</a> ·
+  <a href="#deployment">Deployment</a> ·
   <a href="#roadmap">Roadmap</a>
 </p>
 
@@ -43,7 +51,7 @@
 
 ## Overview
 
-Most perfume sites show a grid of bottles and stop there. AMBRE treats each perfume as its own world. Opening the page plays a scroll-driven film in which the bottle opens, its notes burst out, and all four perfumes arrive together. Every perfume then carries its own colour, mood and story through the rest of the site.
+Most perfume sites show a grid of bottles and stop there. AMBRE treats each perfume as its own world. Opening the page plays a scroll-driven film in which the bottle opens, its notes burst out, and all four perfumes arrive together. From that point on, every perfume carries its own colour, mood and story through the rest of the site.
 
 <div align="center">
 
@@ -56,11 +64,13 @@ Most perfume sites show a grid of bottles and stop there. AMBRE treats each perf
 
 </div>
 
-Behind the visuals it is a working shop: a cart, a checkout that creates real orders, order tracking for customers, and a private admin panel to process them.
+It is also a working shop. Visitors build a cart and place real cash-on-delivery orders, customers can track them, and a private admin panel lets the owner process them.
 
 <br />
 
 ## Demo
+
+**Live site:** [perfumes-website-three.vercel.app](https://perfumes-website-three.vercel.app)
 
 <!--
   Paste the GitHub video link on its own line below this comment.
@@ -98,17 +108,19 @@ Behind the visuals it is a working shop: a cart, a checkout that creates real or
 
 <br />
 
-## Features
+## The experience
 
-- **Cinematic hero.** A pinned, scroll-scrubbed sequence: the bottle opens, notes burst out and are named, then all four perfumes arrive and write *Four perfumes. Four moods.*
-- **A theme per perfume.** Colours, glows and backgrounds change with the perfume being viewed.
-- **Interactive spray.** Tap the bottle and the mist and the sound start on the same beat. Rapid taps layer, and sound can be muted from the header.
-- **Personalisation.** Choose a size, set the intensity (Eau Fraîche, Eau de Parfum, Extrait), and add an engraving or gift wrap.
-- **Cart and checkout.** A slide-in bag, a validated checkout and cash-on-delivery orders.
-- **Order tracking.** Customers find their order using the order number and phone number together.
-- **Private admin panel.** Sign in, view orders, open the details and move each one through New, Confirmed, Delivered or Cancelled.
-- **Circular page transitions** built on the View Transitions API.
-- **Reduced motion support.** The heavy animation is skipped for visitors who ask for it.
+| Stage | What happens |
+|:---|:---|
+| **Hero** | A pinned, scroll-scrubbed film. The bottle opens, notes burst out and are named, then all four perfumes arrive and write *Four perfumes. Four moods.* |
+| **Collection** | The four perfumes, each previewed in its own colours. Moving between them re-colours the header, buttons, glows and backgrounds. Pages change with a circular View Transition. |
+| **Perfume page** | Tap the bottle to spray. The mist and the sound start on the same beat, rapid taps layer, and sound can be muted from the header. |
+| **Personalise** | Choose a size, set the intensity (Eau Fraîche, Eau de Parfum or Extrait), and add an engraving or gift wrap. |
+| **Bag and checkout** | A slide-in bag, a validated checkout and cash-on-delivery orders. |
+| **Tracking** | Customers look up an order with the order number and phone number together. |
+| **Admin** | The owner signs in, sees every order, opens the details and moves it through New, Confirmed, Delivered or Cancelled. |
+
+Visitors who prefer reduced motion get the site without the heavy animation.
 
 <br />
 
@@ -122,7 +134,7 @@ Everything in the interface comes from one small set of tokens, so the site read
 
 <br />
 
-**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour. The active theme is written to CSS variables on the page, so the header, buttons, glows and backgrounds all re-colour together when moving between perfumes.
+**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour. The active theme is written to CSS variables on the page.
 
 | Token | AMBRE | WARD | OUD NUIT | JASMIN |
 |:---|:---:|:---:|:---:|:---:|
@@ -145,11 +157,11 @@ Everything in the interface comes from one small set of tokens, so the site read
 
 <br />
 
-## Tech Stack
+## Tech stack
 
 <table>
 <tr>
-<td valign="top" width="33%">
+<td valign="top" width="25%">
 
 **Frontend**
 - React, TypeScript, Vite
@@ -158,7 +170,7 @@ Everything in the interface comes from one small set of tokens, so the site read
 - Plain CSS with design tokens
 
 </td>
-<td valign="top" width="33%">
+<td valign="top" width="25%">
 
 **Motion and sound**
 - GSAP and ScrollTrigger
@@ -168,12 +180,19 @@ Everything in the interface comes from one small set of tokens, so the site read
 - Web Audio API
 
 </td>
-<td valign="top" width="33%">
+<td valign="top" width="25%">
 
 **Backend**
 - Supabase (Postgres and Auth)
 - Row Level Security
 - Server-side functions (RPC) for orders and tracking
+
+</td>
+<td valign="top" width="25%">
+
+**Hosting**
+- Vercel
+- Static build with SPA rewrites
 
 </td>
 </tr>
@@ -183,32 +202,53 @@ Everything in the interface comes from one small set of tokens, so the site read
 
 ## Architecture
 
-**One theme, one source.** Each perfume owns its palette. A small component writes the active palette to CSS variables on the page, so no other component needs to know which perfume is showing.
+The whole system in one view: the static build served by Vercel, the React app in the browser, and Supabase behind it. The browser never writes orders itself. Every order goes through a server-side function that prices it from the database.
 
 ```mermaid
-flowchart LR
-    A[Route changes] --> B(ThemeSync)
-    B --> C[CSS variables on the page]
-    C --> D[Header]
-    C --> E[Buttons and glows]
-    C --> F[Backgrounds]
-```
+flowchart TB
+    Vercel["Vercel<br/>static build, SPA rewrites"]
 
-**Orders are created on the server, not trusted from the browser.** The shop never inserts orders directly. It calls a server-side function that re-checks everything and prices the order itself.
+    subgraph Browser["Browser: React, TypeScript, Vite"]
+        direction TB
+        Router["React Router"]
+        Data["Catalogue and palettes<br/>src/data"]
+        Theme["ThemeSync<br/>writes the active palette to CSS variables"]
+        Hero["Cinematic hero<br/>GSAP, ScrollTrigger, Lenis"]
+        Shop["Perfume pages<br/>spray, size, intensity, engraving"]
+        Cart["Cart store<br/>Zustand"]
+        Checkout["Checkout<br/>validated form"]
+        Track["Order tracking"]
+        Admin["Admin panel<br/>order list and status changes"]
 
-```mermaid
-sequenceDiagram
-    participant UI as Checkout
-    participant DB as Supabase function
-    participant T as Tracking page
+        Router --> Hero
+        Router --> Shop
+        Router --> Track
+        Router --> Admin
+        Data --> Theme
+        Data --> Shop
+        Theme -.->|"re-colours header, buttons, glows"| Shop
+        Shop --> Cart --> Checkout
+    end
 
-    UI->>DB: create_order(details, items)
-    DB->>DB: validate input, block bots
-    DB->>DB: read prices from the database
-    DB->>DB: rate limit, then save the order
-    DB-->>UI: order number and total
-    T->>DB: track_order(number, phone)
-    DB-->>T: status and items, or nothing
+    subgraph Supabase["Supabase"]
+        direction TB
+        CreateOrder["create_order<br/>validate input, block bots,<br/>read prices, rate limit, save"]
+        TrackOrder["track_order<br/>order number and phone number"]
+        Auth["Auth<br/>rate limited admin sign-in"]
+        DB[("Postgres<br/>orders and items<br/>Row Level Security")]
+
+        CreateOrder --> DB
+        TrackOrder --> DB
+        Auth --> DB
+    end
+
+    Vercel --> Router
+    Checkout -->|"details and items"| CreateOrder
+    CreateOrder -.->|"order number and total"| Checkout
+    Track -->|"number and phone"| TrackOrder
+    TrackOrder -.->|"status and items, or nothing"| Track
+    Admin -->|"admin accounts only"| Auth
+    Admin -->|"read and update orders"| DB
 ```
 
 **Security model**
@@ -220,7 +260,7 @@ sequenceDiagram
 
 <br />
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
@@ -240,7 +280,7 @@ The app opens at `http://localhost:5173`.
 
 ### Environment variables
 
-Create a `.env` file in the project root:
+Create a `.env.local` file in the project root:
 
 ```env
 VITE_SUPABASE_URL=your_project_url
@@ -260,21 +300,36 @@ npm run preview
 
 <br />
 
-## Project Structure
+## Deployment
+
+The site is deployed on Vercel from the `main` branch. Every push redeploys it.
+
+1. Import the repository in Vercel. The Vite preset is detected automatically (build command `npm run build`, output directory `dist`).
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` under **Environment Variables**. Vite bakes these into the bundle at build time, so redeploy after changing them.
+3. Keep `vercel.json` in the project root. It rewrites every path to `index.html`, which lets routes such as `/admin` and the tracking page load directly and survive a refresh.
+4. In Supabase, open **Authentication > URL Configuration** and add the Vercel URL to **Site URL** and **Redirect URLs** so admin sign-in works in production. Keep `http://localhost:5173` in the list for local development.
+
+<br />
+
+## Project structure
 
 ```
-src/
-├── assets/        Static assets
-├── components/
-│   ├── hero/      Scroll-driven cinematic hero
-│   └── home/      Collection, story and gifting sections
-├── pages/
-│   ├── admin/     Private admin panel
-│   └── ...        Perfume, checkout, order and tracking pages
-├── data/          Perfume catalogue and themes
-├── store/         Cart, catalogue and sound state
-├── hooks/         Smooth scroll, spray sound, page reveal
-└── lib/           API, validation and helpers
+.
+├── src/
+│   ├── assets/        Static assets
+│   ├── components/
+│   │   ├── hero/      Scroll-driven cinematic hero
+│   │   └── home/      Collection, story and gifting sections
+│   ├── pages/
+│   │   ├── admin/     Private admin panel
+│   │   └── ...        Perfume, checkout, order and tracking pages
+│   ├── data/          Perfume catalogue and themes
+│   ├── store/         Cart, catalogue and sound state
+│   ├── hooks/         Smooth scroll, spray sound, page reveal
+│   └── lib/           API, validation and helpers
+├── public/            Files served as-is
+├── docs/              README screenshots and brand board
+└── vercel.json        SPA rewrites for Vercel
 ```
 
 <br />
