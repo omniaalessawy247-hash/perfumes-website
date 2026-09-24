@@ -35,3 +35,4 @@ report-*
 supabase/
 node_modules/
 dist/
+docs/*.mp4
