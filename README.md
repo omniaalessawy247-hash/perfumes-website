@@ -4,7 +4,7 @@
 
 <p><i>Four perfumes, each with its own colour, mood and story.</i></p>
 
-<p><b>A cinematic perfume storefront: a scroll-driven hero, a theme that changes with every perfume, and a secure order pipeline behind it.</b></p>
+<p><b>A cinematic perfume storefront with a scroll-driven hero, a theme that changes with every perfume, and a secure order pipeline behind it.</b></p>
 
 <p>
   <img src="https://img.shields.io/badge/AMBRE-D9902F?style=for-the-badge" alt="AMBRE" />
@@ -27,51 +27,23 @@
 </p>
 
 <p>
-  <a href="#-brand-identity">Brand</a> ·
-  <a href="#-screenshots">Screenshots</a> ·
-  <a href="#-features">Features</a> ·
-  <a href="#-architecture">Architecture</a> ·
-  <a href="#-getting-started">Getting Started</a> ·
-  <a href="#-roadmap">Roadmap</a>
+  <a href="#overview">Overview</a> ·
+  <a href="#demo">Demo</a> ·
+  <a href="#screenshots">Screenshots</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#brand-identity">Brand</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#getting-started">Getting Started</a> ·
+  <a href="#roadmap">Roadmap</a>
 </p>
 
 </div>
 
 <br />
 
-<!--
-  DEMO VIDEO
-  Edit this file on GitHub, drag the compressed .mp4 into the editor,
-  and GitHub inserts a link. Paste that link on its own line right here.
--->
-
-
-<br />
-
-<div align="center">
-  <img src="docs/brand/brand-identity.png" alt="AMBRE brand identity: colour palette, typography and voice" width="100%" />
-</div>
-
-<br />
-
-<div align="center">
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE perfume page" /></td>
-<td width="50%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD perfume page" /></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT perfume page" /></td>
-<td width="50%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN perfume page" /></td>
-</tr>
-</table>
-</div>
-
-<br />
-
 ## Overview
 
-Most perfume sites show a grid of bottles and call it done. AMBRE treats each perfume as its own world: opening the page plays a scroll-driven film in which the bottle opens, its notes burst out and all four perfumes arrive together, and every perfume then carries its own colour, mood and story through the whole site.
+Most perfume sites show a grid of bottles and stop there. AMBRE treats each perfume as its own world. Opening the page plays a scroll-driven film in which the bottle opens, its notes burst out, and all four perfumes arrive together. Every perfume then carries its own colour, mood and story through the rest of the site.
 
 <div align="center">
 
@@ -88,15 +60,69 @@ Behind the visuals it is a working shop: a cart, a checkout that creates real or
 
 <br />
 
-## 🎨 Brand identity
+## Demo
 
-Everything in the interface comes from one small set of tokens, so the site feels like one brand even though it changes colour four times.
+<!--
+  Paste the GitHub video link on its own line below this comment.
+  To get it: edit this file on GitHub, drag the .mp4 into the editor,
+  and GitHub inserts the link.
+-->
+
+<br />
+
+## Screenshots
+
+<table>
+<tr>
+<td width="50%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE perfume page" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD perfume page" /></td>
+</tr>
+<tr>
+<td align="center"><sub><b>AMBRE</b></sub></td>
+<td align="center"><sub><b>WARD</b></sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT perfume page" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN perfume page" /></td>
+</tr>
+<tr>
+<td align="center"><sub><b>OUD NUIT</b></sub></td>
+<td align="center"><sub><b>JASMIN</b></sub></td>
+</tr>
+</table>
 
 <div align="center">
-  <img src="docs/brand/brand-identity.png" alt="AMBRE brand identity" width="100%" />
+  <img src="docs/screenshots/checkout.png" width="50%" alt="Checkout" />
+  <br /><sub><b>Checkout</b></sub>
 </div>
 
-**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour. The theme is written to CSS variables on the page, so the header, buttons, glows and backgrounds all re-colour together when you move between perfumes.
+<br />
+
+## Features
+
+- **Cinematic hero.** A pinned, scroll-scrubbed sequence: the bottle opens, notes burst out and are named, then all four perfumes arrive and write *Four perfumes. Four moods.*
+- **A theme per perfume.** Colours, glows and backgrounds change with the perfume being viewed.
+- **Interactive spray.** Tap the bottle and the mist and the sound start on the same beat. Rapid taps layer, and sound can be muted from the header.
+- **Personalisation.** Choose a size, set the intensity (Eau Fraîche, Eau de Parfum, Extrait), and add an engraving or gift wrap.
+- **Cart and checkout.** A slide-in bag, a validated checkout and cash-on-delivery orders.
+- **Order tracking.** Customers find their order using the order number and phone number together.
+- **Private admin panel.** Sign in, view orders, open the details and move each one through New, Confirmed, Delivered or Cancelled.
+- **Circular page transitions** built on the View Transitions API.
+- **Reduced motion support.** The heavy animation is skipped for visitors who ask for it.
+
+<br />
+
+## Brand identity
+
+Everything in the interface comes from one small set of tokens, so the site reads as one brand even though it changes colour four times.
+
+<div align="center">
+  <img src="docs/brand/brand-identity.png" alt="AMBRE brand identity: colour palette, typography and voice" width="100%" />
+</div>
+
+<br />
+
+**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour. The active theme is written to CSS variables on the page, so the header, buttons, glows and backgrounds all re-colour together when moving between perfumes.
 
 | Token | AMBRE | WARD | OUD NUIT | JASMIN |
 |:---|:---:|:---:|:---:|:---:|
@@ -115,46 +141,18 @@ Everything in the interface comes from one small set of tokens, so the site feel
 
 **Voice.** Short, warm and sensory: *Open the hour.* · *Every hour has its scent.* · *Four perfumes. Four moods.*
 
-**Motion.** Two easing curves are used everywhere: `cubic-bezier(0.7, 0, 0.2, 1)` for transitions and `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals.
+**Motion.** Two easing curves are used throughout: `cubic-bezier(0.7, 0, 0.2, 1)` for transitions and `cubic-bezier(0.16, 1, 0.3, 1)` for arrivals.
 
 <br />
 
-## 📸 Screenshots
-
-<table>
-<tr>
-<td width="50%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE" /></td>
-<td width="50%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD" /></td>
-</tr>
-<tr>
-<td align="center"><sub><b>AMBRE</b></sub></td>
-<td align="center"><sub><b>WARD</b></sub></td>
-</tr>
-<tr>
-<td width="50%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT" /></td>
-<td width="50%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN" /></td>
-</tr>
-<tr>
-<td align="center"><sub><b>OUD NUIT</b></sub></td>
-<td align="center"><sub><b>JASMIN</b></sub></td>
-</tr>
-</table>
-
-<div align="center">
-  <img src="docs/screenshots/checkout.png" width="50%" alt="Checkout" />
-  <br /><sub><b>Checkout</b></sub>
-</div>
-
-<br />
-
-## 🧱 Tech Stack
+## Tech Stack
 
 <table>
 <tr>
 <td valign="top" width="33%">
 
 **Frontend**
-- React · TypeScript · Vite
+- React, TypeScript, Vite
 - React Router
 - Zustand (cart, catalog, sound)
 - Plain CSS with design tokens
@@ -163,7 +161,7 @@ Everything in the interface comes from one small set of tokens, so the site feel
 <td valign="top" width="33%">
 
 **Motion and sound**
-- GSAP + ScrollTrigger
+- GSAP and ScrollTrigger
 - Lenis smooth scrolling
 - Framer Motion
 - View Transitions API
@@ -173,7 +171,7 @@ Everything in the interface comes from one small set of tokens, so the site feel
 <td valign="top" width="33%">
 
 **Backend**
-- Supabase (Postgres + Auth)
+- Supabase (Postgres and Auth)
 - Row Level Security
 - Server-side functions (RPC) for orders and tracking
 
@@ -183,23 +181,9 @@ Everything in the interface comes from one small set of tokens, so the site feel
 
 <br />
 
-## ✨ Features
+## Architecture
 
-- 🎬 **Cinematic hero.** A pinned, scroll-scrubbed sequence: the bottle opens, notes burst out and are named, then all four perfumes arrive and write *Four perfumes. Four moods.*
-- 🎨 **A theme per perfume.** Colours, glows and backgrounds change with the perfume you are viewing.
-- 🌫️ **Interactive spray.** Tap the bottle and the mist and the sound start on the same beat. Rapid taps layer, and sound can be muted from the header.
-- 🧴 **Personalise it.** Choose a size, set the intensity (Eau Fraîche, Eau de Parfum, Extrait), add an engraving or gift wrap.
-- 🛍️ **Cart and checkout.** A slide-in bag, validated checkout and cash-on-delivery orders.
-- 📦 **Order tracking.** Customers find their order with the order number and phone number together.
-- 🔐 **Private admin panel.** Sign in, see orders, open the details and move them through New, Confirmed, Delivered or Cancelled.
-- 🌀 **Circular page transitions** using the View Transitions API.
-- ♿ **Reduced motion supported.** The heavy animation is skipped for visitors who ask for it.
-
-<br />
-
-## 🏗️ Architecture
-
-**One theme, one source.** Each perfume owns its palette. A small component writes the active palette to CSS variables on the page, so no component needs to know which perfume is showing.
+**One theme, one source.** Each perfume owns its palette. A small component writes the active palette to CSS variables on the page, so no other component needs to know which perfume is showing.
 
 ```mermaid
 flowchart LR
@@ -210,7 +194,7 @@ flowchart LR
     C --> F[Backgrounds]
 ```
 
-**Orders are created on the server, not trusted from the browser.** The shop never inserts orders directly. It calls a server-side function that re-checks everything and prices the order itself:
+**Orders are created on the server, not trusted from the browser.** The shop never inserts orders directly. It calls a server-side function that re-checks everything and prices the order itself.
 
 ```mermaid
 sequenceDiagram
@@ -228,21 +212,22 @@ sequenceDiagram
 ```
 
 **Security model**
-- Row Level Security is on for the order tables. Only accounts listed as admins can read or change orders.
+
+- Row Level Security is enabled on the order tables. Only accounts listed as admins can read or change orders.
 - Prices are read from the database when an order is created, so a tampered browser cannot change a total.
 - Order creation, order tracking and admin sign-in are rate limited.
-- A wrong order number or a wrong phone number both return the same empty answer.
+- A wrong order number and a wrong phone number return the same empty answer, so neither can be probed on its own.
 
 <br />
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
 - Node.js 20.19 or newer
-- A Supabase project (optional, see below)
+- A Supabase project (optional, see the note below)
 
-### Run it
+### Run locally
 
 ```bash
 git clone https://github.com/omniaalessawy247-hash/perfumes-website.git
@@ -262,7 +247,7 @@ VITE_SUPABASE_URL=your_project_url
 VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
 ```
 
-The publishable key is meant to be public. Never put a `service_role` key in this project.
+The publishable key is designed to be public. Never put a `service_role` key in this project.
 
 > The database schema and security policies are kept outside this repository. Without a backend the storefront still runs, using built-in catalogue prices. Checkout, order tracking and the admin panel need a configured Supabase project.
 
@@ -275,25 +260,26 @@ npm run preview
 
 <br />
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
+├── assets/        Static assets
 ├── components/
-│   ├── hero/        Scroll-driven cinematic hero
-│   └── home/        Collection, story and gifting sections
+│   ├── hero/      Scroll-driven cinematic hero
+│   └── home/      Collection, story and gifting sections
 ├── pages/
-│   ├── admin/       Private admin panel
-│   └── …            Perfume, checkout, order and tracking pages
-├── data/            Perfume catalogue and themes
-├── store/           Cart, catalogue and sound state
-├── hooks/           Smooth scroll, spray sound, page reveal
-└── lib/             API, validation and helpers
+│   ├── admin/     Private admin panel
+│   └── ...        Perfume, checkout, order and tracking pages
+├── data/          Perfume catalogue and themes
+├── store/         Cart, catalogue and sound state
+├── hooks/         Smooth scroll, spray sound, page reveal
+└── lib/           API, validation and helpers
 ```
 
 <br />
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Arabic language and right-to-left layout
 - [ ] Online payment
