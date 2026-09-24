@@ -1,22 +1,18 @@
 <div align="center">
 
-<h1>AMBRE</h1>
+<a href="https://perfumes-website-three.vercel.app">
+  <img src="docs/brand/banner.png" alt="AMBRE: four perfumes, each with its own colour, mood and story" width="100%" />
+</a>
 
-<p><i>Four perfumes, each with its own colour, mood and story.</i></p>
+<br />
+<br />
 
 <p><b>A cinematic perfume storefront with a scroll-driven hero, a theme that changes with every perfume,<br />and a secure order pipeline behind it.</b></p>
 
 <p>
   <a href="https://perfumes-website-three.vercel.app">
-    <img src="https://img.shields.io/badge/Live_demo-perfumes--website--three.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo" />
+    <img src="https://img.shields.io/badge/Live_demo-perfumes--website--three.vercel.app-1E1416?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo" />
   </a>
-</p>
-
-<p>
-  <img src="https://img.shields.io/badge/AMBRE-D9902F?style=for-the-badge" alt="AMBRE" />
-  <img src="https://img.shields.io/badge/WARD-C9787C?style=for-the-badge" alt="WARD" />
-  <img src="https://img.shields.io/badge/OUD_NUIT-1E1416?style=for-the-badge" alt="OUD NUIT" />
-  <img src="https://img.shields.io/badge/JASMIN-7F9A62?style=for-the-badge" alt="JASMIN" />
 </p>
 
 <p>
@@ -26,11 +22,7 @@
   <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black" alt="GSAP" />
   <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
-</p>
-
-<p>
   <img src="https://img.shields.io/github/last-commit/omniaalessawy247-hash/perfumes-website?style=flat-square" alt="Last commit" />
-  <img src="https://img.shields.io/github/stars/omniaalessawy247-hash/perfumes-website?style=flat-square" alt="Stars" />
 </p>
 
 <p>
@@ -38,9 +30,9 @@
   <a href="#demo">Demo</a> ·
   <a href="#screenshots">Screenshots</a> ·
   <a href="#the-experience">Experience</a> ·
-  <a href="#brand-identity">Brand</a> ·
   <a href="#architecture">Architecture</a> ·
-  <a href="#getting-started">Getting Started</a> ·
+  <a href="#brand-identity">Brand</a> ·
+  <a href="#getting-started">Getting started</a> ·
   <a href="#deployment">Deployment</a> ·
   <a href="#roadmap">Roadmap</a>
 </p>
@@ -64,7 +56,35 @@ Most perfume sites show a grid of bottles and stop there. AMBRE treats each perf
 
 </div>
 
-It is also a working shop. Visitors build a cart and place real cash-on-delivery orders, customers can track them, and a private admin panel lets the owner process them.
+<br />
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+**A film, not a hero image**
+
+The landing page is a pinned, scroll-scrubbed sequence built with GSAP and ScrollTrigger. The visitor scrolls and the bottle opens.
+
+</td>
+<td width="33%" valign="top">
+
+**One theme per perfume**
+
+Each perfume owns a palette. A single component writes it to CSS variables, so the header, buttons, glows and backgrounds re-colour together.
+
+</td>
+<td width="33%" valign="top">
+
+**Orders you can trust**
+
+The browser never writes an order. A server-side function validates the request, reads prices from the database and rate limits the caller.
+
+</td>
+</tr>
+</table>
+
+Behind the visuals it is a working shop: a cart, a checkout that creates real cash-on-delivery orders, order tracking for customers, and a private admin panel to process them.
 
 <br />
 
@@ -113,7 +133,7 @@ It is also a working shop. Visitors build a cart and place real cash-on-delivery
 | Stage | What happens |
 |:---|:---|
 | **Hero** | A pinned, scroll-scrubbed film. The bottle opens, notes burst out and are named, then all four perfumes arrive and write *Four perfumes. Four moods.* |
-| **Collection** | The four perfumes, each previewed in its own colours. Moving between them re-colours the header, buttons, glows and backgrounds. Pages change with a circular View Transition. |
+| **Collection** | The four perfumes, each previewed in its own colours. Moving between them re-colours the whole interface, and pages change with a circular View Transition. |
 | **Perfume page** | Tap the bottle to spray. The mist and the sound start on the same beat, rapid taps layer, and sound can be muted from the header. |
 | **Personalise** | Choose a size, set the intensity (Eau Fraîche, Eau de Parfum or Extrait), and add an engraving or gift wrap. |
 | **Bag and checkout** | A slide-in bag, a validated checkout and cash-on-delivery orders. |
@@ -121,6 +141,33 @@ It is also a working shop. Visitors build a cart and place real cash-on-delivery
 | **Admin** | The owner signs in, sees every order, opens the details and moves it through New, Confirmed, Delivered or Cancelled. |
 
 Visitors who prefer reduced motion get the site without the heavy animation.
+
+<br />
+
+## Architecture
+
+<div align="center">
+  <img src="docs/architecture.png" alt="AMBRE system architecture: Vercel serves the React storefront, which calls Supabase server functions that read and write Postgres" width="100%" />
+</div>
+
+<br />
+
+**How an order travels**
+
+1. Checkout sends the customer details and the cart items to the `create_order` function.
+2. The function validates the input and blocks bots.
+3. It reads every price from the database. A total computed in the browser is never trusted.
+4. It applies the rate limit, saves the order and returns the order number and total.
+5. Later, the tracking page calls `track_order` with the order number and phone number. If either is wrong, nothing comes back.
+
+**Security model**
+
+- Row Level Security is enabled on the order tables. Only accounts listed as admins can read or change orders.
+- Prices are read from the database when an order is created, so a tampered browser cannot change a total.
+- Order creation, order tracking and admin sign-in are rate limited.
+- A wrong order number and a wrong phone number return the same empty answer, so neither can be probed on its own.
+
+**One theme, one source.** Each perfume owns its palette. A small component, `ThemeSync`, writes the active palette to CSS variables whenever the route changes. No other component needs to know which perfume is showing.
 
 <br />
 
@@ -134,7 +181,7 @@ Everything in the interface comes from one small set of tokens, so the site read
 
 <br />
 
-**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour. The active theme is written to CSS variables on the page.
+**Colour.** Every perfume defines five values: background, text, accent, liquid and name colour.
 
 | Token | AMBRE | WARD | OUD NUIT | JASMIN |
 |:---|:---:|:---:|:---:|:---:|
@@ -166,7 +213,7 @@ Everything in the interface comes from one small set of tokens, so the site read
 **Frontend**
 - React, TypeScript, Vite
 - React Router
-- Zustand (cart, catalog, sound)
+- Zustand (cart, catalogue, sound)
 - Plain CSS with design tokens
 
 </td>
@@ -197,66 +244,6 @@ Everything in the interface comes from one small set of tokens, so the site read
 </td>
 </tr>
 </table>
-
-<br />
-
-## Architecture
-
-The whole system in one view: the static build served by Vercel, the React app in the browser, and Supabase behind it. The browser never writes orders itself. Every order goes through a server-side function that prices it from the database.
-
-```mermaid
-flowchart TB
-    Vercel["Vercel<br/>static build, SPA rewrites"]
-
-    subgraph Browser["Browser: React, TypeScript, Vite"]
-        direction TB
-        Router["React Router"]
-        Data["Catalogue and palettes<br/>src/data"]
-        Theme["ThemeSync<br/>writes the active palette to CSS variables"]
-        Hero["Cinematic hero<br/>GSAP, ScrollTrigger, Lenis"]
-        Shop["Perfume pages<br/>spray, size, intensity, engraving"]
-        Cart["Cart store<br/>Zustand"]
-        Checkout["Checkout<br/>validated form"]
-        Track["Order tracking"]
-        Admin["Admin panel<br/>order list and status changes"]
-
-        Router --> Hero
-        Router --> Shop
-        Router --> Track
-        Router --> Admin
-        Data --> Theme
-        Data --> Shop
-        Theme -.->|"re-colours header, buttons, glows"| Shop
-        Shop --> Cart --> Checkout
-    end
-
-    subgraph Supabase["Supabase"]
-        direction TB
-        CreateOrder["create_order<br/>validate input, block bots,<br/>read prices, rate limit, save"]
-        TrackOrder["track_order<br/>order number and phone number"]
-        Auth["Auth<br/>rate limited admin sign-in"]
-        DB[("Postgres<br/>orders and items<br/>Row Level Security")]
-
-        CreateOrder --> DB
-        TrackOrder --> DB
-        Auth --> DB
-    end
-
-    Vercel --> Router
-    Checkout -->|"details and items"| CreateOrder
-    CreateOrder -.->|"order number and total"| Checkout
-    Track -->|"number and phone"| TrackOrder
-    TrackOrder -.->|"status and items, or nothing"| Track
-    Admin -->|"admin accounts only"| Auth
-    Admin -->|"read and update orders"| DB
-```
-
-**Security model**
-
-- Row Level Security is enabled on the order tables. Only accounts listed as admins can read or change orders.
-- Prices are read from the database when an order is created, so a tampered browser cannot change a total.
-- Order creation, order tracking and admin sign-in are rate limited.
-- A wrong order number and a wrong phone number return the same empty answer, so neither can be probed on its own.
 
 <br />
 
@@ -302,11 +289,11 @@ npm run preview
 
 ## Deployment
 
-The site is deployed on Vercel from the `main` branch. Every push redeploys it.
+The site is deployed on Vercel from the `main` branch, and every push redeploys it.
 
 1. Import the repository in Vercel. The Vite preset is detected automatically (build command `npm run build`, output directory `dist`).
 2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` under **Environment Variables**. Vite bakes these into the bundle at build time, so redeploy after changing them.
-3. Keep `vercel.json` in the project root. It rewrites every path to `index.html`, which lets routes such as `/admin` and the tracking page load directly and survive a refresh.
+3. Keep `vercel.json` in the project root. It rewrites every path to `index.html`, so routes such as `/admin` and the tracking page load directly and survive a refresh.
 4. In Supabase, open **Authentication > URL Configuration** and add the Vercel URL to **Site URL** and **Redirect URLs** so admin sign-in works in production. Keep `http://localhost:5173` in the list for local development.
 
 <br />
@@ -328,7 +315,7 @@ The site is deployed on Vercel from the `main` branch. Every push redeploys it.
 │   ├── hooks/         Smooth scroll, spray sound, page reveal
 │   └── lib/           API, validation and helpers
 ├── public/            Files served as-is
-├── docs/              README screenshots and brand board
+├── docs/              Screenshots, brand board and architecture diagram
 └── vercel.json        SPA rewrites for Vercel
 ```
 
