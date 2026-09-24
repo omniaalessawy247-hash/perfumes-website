@@ -51,11 +51,12 @@ AMBRE is a perfume storefront built as a complete product: a cinematic front end
 
 **Live site:** [perfumes-website-three.vercel.app](https://perfumes-website-three.vercel.app)
 
-<!--
-  Paste the GitHub video link on its own line below this comment.
-  To get it: edit this file on GitHub, drag the .mp4 into the editor,
-  and GitHub inserts the link.
--->
+
+<div align="center">
+  <video src="https://github.com/user-attachments/assets/c31eba6f-9962-43fe-9fb8-ec71fe18d07f" width="100%" controls muted playsinline></video>
+  <br />
+  <sub>Video not loading? <a href="https://github.com/user-attachments/assets/c31eba6f-9962-43fe-9fb8-ec71fe18d07f">Open it directly</a>.</sub>
+</div>
 
 <br />
 
