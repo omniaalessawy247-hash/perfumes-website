@@ -41,13 +41,10 @@
 
 <!--
   DEMO VIDEO
-  Easiest way: open this file in the GitHub editor, drag your .mp4 into it,
-  and GitHub inserts a working link. Put that link on its own line here.
-  Or commit the file as docs/demo.mp4 and keep the tag below.
+  Edit this file on GitHub, drag the compressed .mp4 into the editor,
+  and GitHub inserts a link. Paste that link on its own line right here.
 -->
-<div align="center">
-  <video src="docs/demo.mp4" width="100%" controls muted loop playsinline></video>
-</div>
+
 
 <br />
 
@@ -60,12 +57,12 @@
 <div align="center">
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/01-hero.png" width="100%" alt="Cinematic hero" /></td>
-<td width="50%"><img src="docs/screenshots/02-collection.png" width="100%" alt="The collection" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE perfume page" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD perfume page" /></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/03-perfume.png" width="100%" alt="Perfume page" /></td>
-<td width="50%"><img src="docs/screenshots/04-checkout.png" width="100%" alt="Checkout" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT perfume page" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN perfume page" /></td>
 </tr>
 </table>
 </div>
@@ -126,22 +123,27 @@ Everything in the interface comes from one small set of tokens, so the site feel
 
 <table>
 <tr>
-<td width="50%"><img src="docs/screenshots/01-hero.png" width="100%" alt="Hero" /></td>
-<td width="50%"><img src="docs/screenshots/02-collection.png" width="100%" alt="Collection" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD" /></td>
 </tr>
 <tr>
-<td align="center"><sub><b>Scroll-driven cinematic hero</b></sub></td>
-<td align="center"><sub><b>The collection</b></sub></td>
+<td align="center"><sub><b>AMBRE</b></sub></td>
+<td align="center"><sub><b>WARD</b></sub></td>
 </tr>
 <tr>
-<td width="50%"><img src="docs/screenshots/03-perfume.png" width="100%" alt="Perfume page" /></td>
-<td width="50%"><img src="docs/screenshots/04-checkout.png" width="100%" alt="Checkout" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT" /></td>
+<td width="50%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN" /></td>
 </tr>
 <tr>
-<td align="center"><sub><b>Perfume page with interactive spray</b></sub></td>
-<td align="center"><sub><b>Checkout</b></sub></td>
+<td align="center"><sub><b>OUD NUIT</b></sub></td>
+<td align="center"><sub><b>JASMIN</b></sub></td>
 </tr>
 </table>
+
+<div align="center">
+  <img src="docs/screenshots/checkout.png" width="50%" alt="Checkout" />
+  <br /><sub><b>Checkout</b></sub>
+</div>
 
 <br />
 
