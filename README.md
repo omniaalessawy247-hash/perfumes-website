@@ -1,167 +1,195 @@
 <div align="center">
 
-# AMBRE
+# AMBRE PARFUMS
 
-*Four perfumes, each with its own colour, mood and story.*
-
-A full-stack perfume storefront with a scroll-driven cinematic front end<br />and a secure, server-side order pipeline.
-
-<a href="https://perfumes-website-three.vercel.app">
-  <img src="https://img.shields.io/badge/Live_demo-perfumes--website--three.vercel.app-1E1416?style=for-the-badge&logo=vercel&logoColor=white" alt="Live demo" />
-</a>
-
-<br />
-<br />
+*Luxury Perfume Website — Four perfumes, each with its own colour, mood and story.*
 
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React" />
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
-<img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
+<img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" />
 <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black" alt="GSAP" />
 <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white" alt="Supabase" />
 <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" />
 
-<p>
-  <a href="#overview">Overview</a> ·
-  <a href="#demo">Demo</a> ·
-  <a href="#screenshots">Screenshots</a> ·
-  <a href="#features">Features</a> ·
-  <a href="#architecture">Architecture</a> ·
-  <a href="#getting-started">Getting started</a> ·
-  <a href="#deployment">Deployment</a> ·
-  <a href="#roadmap">Roadmap</a>
+</div>
+
+<br />
+
+## Project Overview
+
+AMBRE PARFUMS is a luxury perfume storefront built to showcase a brand and its collection through a cinematic, scroll-driven browsing experience. The site presents four perfumes — **AMBRE**, **WARD**, **OUD NUIT** and **JASMIN** — each with its own colour theme, notes and story, alongside an interactive bottle-spray experience, a full ordering flow (cash on delivery), order tracking, and a private admin panel for managing orders.
+
+<br />
+
+## Brand / Visual Identity
+
+<p align="center">
+  <img src="public/assets/Identity Board.png" alt="AMBRE Brand Identity Board" />
 </p>
 
-</div>
+Each perfume carries a distinct visual identity across the entire site — background, text, accent, liquid and name colours — kept in sync by a `ThemeSync` component that writes the active palette to CSS variables on every route change. Typography pairs **Fraunces** (serif) for display type with **DM Sans** for body text.
 
 <br />
 
-## Overview
+## Perfume Collection
 
-AMBRE is a perfume storefront built as a complete product: a cinematic front end, and a small backend that handles orders securely. Four perfumes (AMBRE, WARD, OUD NUIT and JASMIN) each carry their own colour theme across the whole site. Visitors personalise a perfume and order it with cash on delivery, customers track their order, and the owner manages orders from a private admin panel.
+| Perfume | Tagline | Top · Heart · Base |
+|:---|:---|:---|
+| **AMBRE** | A perfume that opens like golden hour. | Blood orange · Rose · Amber |
+| **WARD** | Soft petals, warm skin. | Pink pepper · Damask rose · White musk |
+| **OUD NUIT** | Smoke, velvet and midnight. | Amber · Oud · Vanilla |
+| **JASMIN** | Fresh petals after the rain. | Green leaves · Sambac jasmine · White musk |
 
-**Highlights**
-
-- **Front-end craft.** A pinned, scroll-scrubbed hero, a theme that changes with every perfume, an interactive spray with synced sound, and circular page transitions.
-- **Server-side trust.** Orders are validated and priced on the server. The browser cannot set a price.
-- **The full loop.** Browse, personalise, order, track and administer, end to end.
-
-<br />
-
-## Demo
-
-**Live site:** [perfumes-website-three.vercel.app](https://perfumes-website-three.vercel.app)
-
-
-<div align="center">
-  <video src="https://github.com/user-attachments/assets/c31eba6f-9962-43fe-9fb8-ec71fe18d07f" width="100%" controls muted playsinline></video>
-  <br />
-  <sub>Video not loading? <a href="https://github.com/user-attachments/assets/c31eba6f-9962-43fe-9fb8-ec71fe18d07f">Open it directly</a>.</sub>
-</div>
+Each perfume is available in **30 ml, 50 ml and 100 ml** sizes.
 
 <br />
 
-## Screenshots
+## Main Features
 
-<table>
-<tr>
-<td width="20%"><img src="docs/screenshots/perfume-ambr.png" width="100%" alt="AMBRE perfume page" /></td>
-<td width="20%"><img src="docs/screenshots/perfume-ward.png" width="100%" alt="WARD perfume page" /></td>
-<td width="20%"><img src="docs/screenshots/perfume-oud-nuit.png" width="100%" alt="OUD NUIT perfume page" /></td>
-<td width="20%"><img src="docs/screenshots/perfume-jasmin.png" width="100%" alt="JASMIN perfume page" /></td>
-<td width="20%"><img src="docs/screenshots/checkout.png" width="100%" alt="Checkout" /></td>
-</tr>
-<tr>
-<td align="center"><sub><b>AMBRE</b></sub></td>
-<td align="center"><sub><b>WARD</b></sub></td>
-<td align="center"><sub><b>OUD NUIT</b></sub></td>
-<td align="center"><sub><b>JASMIN</b></sub></td>
-<td align="center"><sub><b>Checkout</b></sub></td>
-</tr>
-</table>
+- **Cinematic hero** — a pinned, scroll-scrubbed sequence (GSAP + ScrollTrigger) where the bottle opens, ingredient notes burst out, and the four perfumes are revealed together at the end
+- **Per-perfume theming** — colours, product pages and the cart drawer all adapt to the selected perfume's palette
+- **Interactive spray** — tapping a bottle on its product page triggers a mist animation synced with a Web Audio spray sound
+- **Circular page transitions** — using the View Transitions API, with `prefers-reduced-motion` respected throughout
+- **Shopping bag** — size, intensity, custom engraving (up to 14 characters) and gift-wrap options, with a slide-in cart drawer
+- **Checkout** — validated form, cash-on-delivery payment, bot protection via a honeypot field
+- **Order tracking** — customers look up an order by order number and phone number together
+- **Admin panel** — private sign-in, order list with filtering/search/sorting, CSV export, and order status management
 
 <br />
 
-## Features
+## Pages
 
-<table>
-<tr>
-<td valign="top" width="33%">
-
-**Storefront**
-
-- Cinematic hero: the bottle opens, notes burst out, four perfumes arrive
-- A theme per perfume
-- Interactive spray with synced sound
-- Circular page transitions
-- Reduced motion supported
-
-</td>
-<td valign="top" width="33%">
-
-**Ordering**
-
-- Size, intensity, engraving and gift wrap
-- Slide-in bag
-- Validated checkout, cash on delivery
-- Order tracking by order number and phone number
-
-</td>
-<td valign="top" width="33%">
-
-**Admin**
-
-- Private sign-in
-- Order list with full details
-- Status changes: New, Confirmed, Delivered, Cancelled
-
-</td>
-</tr>
-</table>
+| Route | Page |
+|:---|:---|
+| `/` | Home — hero, collection, story and gifting sections |
+| `/perfume/:id` | Individual perfume product page |
+| `/checkout` | Checkout and order form |
+| `/order/:id` | Order confirmation |
+| `/track-order` | Order tracking |
+| `/admin/login` | Admin sign-in (not linked in the public UI) |
+| `/admin/orders` | Admin order dashboard (guarded) |
+| `*` | 404 Not Found |
 
 <br />
 
-## Architecture
+## System Architecture
 
-<div align="center">
-  <img src="docs/architecture.png" alt="AMBRE architecture: a React storefront on Vercel calls Supabase server functions, which read and write Postgres with Row Level Security" width="100%" />
-</div>
+```mermaid
+graph TD
+    subgraph Client["React + TypeScript (Vite) — Vercel"]
+        Router[React Router]
+        Home[Home: Hero / Collection / Story / Ritual]
+        PDP[Perfume Page]
+        Checkout[Checkout]
+        Track[Track Order]
+        Admin[Admin: Login / Guard / Orders]
+        State[Zustand: cart, catalog, sound]
+        Lib[lib/api.ts]
+    end
+
+    subgraph Supabase["Supabase Backend"]
+        Auth[Supabase Auth]
+        RPC1[RPC: create_order]
+        RPC2[RPC: track_order]
+        RPC3[RPC: admin_login_guard]
+        DB[(Postgres: orders, order_items,\nproduct_sizes, admins, rate_limits)]
+        RLS[Row Level Security]
+    end
+
+    Router --> Home
+    Router --> PDP
+    Router --> Checkout
+    Router --> Track
+    Router --> Admin
+
+    Home --> State
+    PDP --> State
+    Checkout --> Lib
+    Track --> Lib
+    Admin --> Lib
+    Admin --> Auth
+
+    Lib --> RPC1
+    Lib --> RPC2
+    Lib --> RPC3
+    Lib --> DB
+
+    Auth --> RLS
+    RLS --> DB
+    RPC1 --> DB
+    RPC2 --> DB
+    RPC3 --> DB
+```
+
+Business logic lives entirely in Supabase (Postgres, Auth, server-side RPC functions) — there is no custom application server. Order creation and status reads go through `create_order` and `track_order`, which validate input, re-price every item from the database, and are rate-limited, so a tampered client can never set its own price. Order data is protected by Row Level Security, readable and writable only by accounts listed in the `admins` table.
 
 <br />
 
-### Frontend
+## Project Structure
 
-- **Stack.** React and TypeScript on Vite, with React Router for routes.
-- **Theming.** Each perfume defines five colour values: background, text, accent, liquid and name colour. A small component, `ThemeSync`, writes the active palette to CSS variables on every route change, so no other component needs to know which perfume is showing. Type is set in Fraunces and DM Sans.
-- **Motion.** GSAP and ScrollTrigger drive the pinned hero, Lenis handles smooth scrolling, and the View Transitions API provides circular page transitions. Heavy animation is skipped for visitors who prefer reduced motion.
-- **State.** Zustand holds the cart, the catalogue and the sound setting.
-- **Sound.** The Web Audio API plays the spray sound on the same beat as the mist, and rapid taps layer.
-
-### Backend
-
-The backend is Supabase (Postgres and Auth) with no custom server. Business logic lives in server-side functions that the browser calls.
-
-- **`create_order`.** Validates the input, blocks bots, reads every price from the database, applies a rate limit and saves the order. The browser never inserts an order directly, so a tampered client cannot change a total.
-- **`track_order`.** Needs the order number and the phone number together. A wrong number and a wrong phone return the same empty answer, so neither can be probed on its own.
-- **Access control.** Row Level Security is enabled on the order tables, and only accounts listed as admins can read or change orders. Order creation, tracking and admin sign-in are rate limited.
-- **Fallback.** Without a backend the storefront still runs on built-in catalogue prices.
+```
+.
+├── src/
+│   ├── components/
+│   │   ├── hero/          Scroll-driven cinematic hero (Hero.tsx, swarm.ts)
+│   │   ├── home/           Collection, Story, Ritual, Marquee sections
+│   │   ├── Header.tsx, Footer.tsx, CartDrawer.tsx, ThemeSync.tsx, icons.tsx
+│   ├── pages/
+│   │   ├── admin/          AdminLogin, AdminGuard, AdminShell, AdminOrders, OrderDrawer
+│   │   ├── Home.tsx, PerfumePage.tsx, Checkout.tsx, OrderComplete.tsx,
+│   │   │   TrackOrder.tsx, NotFound.tsx
+│   ├── data/
+│   │   ├── catalog.ts       Perfume catalogue: names, notes, themes, sizes
+│   │   └── assets.ts        Generated image-id → path map
+│   ├── store/               Zustand: cart.ts, catalog.ts, sound.ts
+│   ├── hooks/                smoothScroll.ts, useRevealNavigate.ts, useSpraySound.ts
+│   └── lib/                  api.ts (Supabase calls), supabase.ts, validate.ts,
+│                              sanitize.ts, format.ts
+├── supabase/
+│   ├── phase2.sql            Order numbers, RLS policies, rate limiting, RPC functions
+│   └── fix_orders.sql        Schema/order-flow repair script
+├── public/
+│   └── assets/                Static images, including Identity Board.png
+└── setup.mjs                  Project scaffolding script
+```
 
 <br />
 
-## Tech stack
+## Technology Stack
 
 | Layer | Tools |
 |:---|:---|
-| Frontend | React, TypeScript, Vite, React Router, plain CSS with design tokens |
-| Motion and sound | GSAP, ScrollTrigger, Lenis, Framer Motion, View Transitions API, Web Audio API |
-| State | Zustand |
+| Frontend | React, TypeScript, Vite, React Router |
+| Motion & sound | GSAP, ScrollTrigger, Lenis (smooth scroll), Framer Motion, View Transitions API, Web Audio API |
+| State | Zustand (cart, catalog, sound — with `persist` for cart/sound) |
 | Backend | Supabase (Postgres, Auth, Row Level Security, RPC functions) |
 | Hosting | Vercel |
 
 <br />
 
-## Getting started
+## UI/UX
 
-**Prerequisites:** Node.js 20.19 or newer. A Supabase project is optional, see the note below.
+- **Theme-per-perfume**: five CSS custom properties (background, text, accent, liquid, on-accent) recalculated on every route via `ThemeSync`
+- **Smooth scrolling** with Lenis, synced to GSAP's ScrollTrigger
+- **Reduced motion support**: heavy animation sequences are skipped via `prefers-reduced-motion`
+- **Responsive layouts** across the hero, product stage, checkout and admin dashboard, with dedicated mobile breakpoints throughout
+- **Accessible forms**: labelled fields, `aria-live` error messaging, and honeypot-based bot protection on checkout and tracking forms
+
+<br />
+
+## Admin System
+
+- **Private sign-in** (`/admin/login`) via Supabase Auth, rate-limited through the `admin_login_guard` RPC, not linked anywhere in the public UI
+- **Route guarding** (`AdminGuard`) redirects unauthenticated visitors to the login page
+- **Order dashboard** (`AdminOrders`) — revenue and order stats, a 7-day activity chart, per-perfume unit ranking, search, status filters, sorting, pagination and CSV export
+- **Order drawer** (`OrderDrawer`) — full order detail, a status stepper (New → Confirmed → Delivered), cancel/restore, and one-tap call/WhatsApp contact
+- **Status management**: orders move between **New**, **Confirmed**, **Delivered** and **Cancelled**, enforced by a database check constraint and restricted to admin accounts by Row Level Security
+
+<br />
+
+## Installation / Run
+
+**Prerequisites:** Node.js 20.19 or newer. A Supabase project is optional — see the note below.
 
 ```bash
 git clone https://github.com/omniaalessawy247-hash/perfumes-website.git
@@ -179,9 +207,8 @@ VITE_SUPABASE_URL=your_project_url
 VITE_SUPABASE_PUBLISHABLE_KEY=your_publishable_key
 ```
 
-The publishable key is designed to be public. Never put a `service_role` key in this project.
-
-> The database schema and security policies are kept outside this repository. Without a backend the storefront still runs, using built-in catalogue prices. Checkout, order tracking and the admin panel need a configured Supabase project.
+> The publishable key is designed to be public. Never put a `service_role` key in this project.
+> Without a configured backend the storefront still runs, using built-in catalogue prices. Checkout, order tracking and the admin panel need a configured Supabase project (see `supabase/phase2.sql`).
 
 To create a production build:
 
@@ -189,47 +216,3 @@ To create a production build:
 npm run build
 npm run preview
 ```
-
-<br />
-
-## Deployment
-
-The site is deployed on Vercel from the `main` branch, and every push redeploys it.
-
-1. Import the repository in Vercel. The Vite preset is detected automatically (build command `npm run build`, output directory `dist`).
-2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` under **Environment Variables**. Vite bakes them into the bundle at build time, so redeploy after changing them.
-3. Keep `vercel.json` in the project root. It rewrites every path to `index.html`, so routes such as `/admin` load directly and survive a refresh.
-4. In Supabase, add the Vercel URL under **Authentication > URL Configuration** (Site URL and Redirect URLs) so admin sign-in works in production.
-
-<br />
-
-## Project structure
-
-```
-.
-├── src/
-│   ├── assets/        Static assets
-│   ├── components/
-│   │   ├── hero/      Scroll-driven cinematic hero
-│   │   └── home/      Collection, story and gifting sections
-│   ├── pages/
-│   │   ├── admin/     Private admin panel
-│   │   └── ...        Perfume, checkout, order and tracking pages
-│   ├── data/          Perfume catalogue and themes
-│   ├── store/         Cart, catalogue and sound state
-│   ├── hooks/         Smooth scroll, spray sound, page reveal
-│   └── lib/           API, validation and helpers
-├── public/            Files served as-is
-├── docs/              Screenshots and architecture diagram
-└── vercel.json        SPA rewrites for Vercel
-```
-
-<br />
-
-## Roadmap
-
-- [ ] Arabic language and right-to-left layout
-- [ ] Online payment
-- [ ] Lighter hero for low-end phones
-- [ ] Manage prices and stock from the admin panel
-- [ ] End-to-end tests
