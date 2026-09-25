@@ -49,7 +49,11 @@ export default function Header() {
   return (
     <header className={'site-header' + (scrolled ? ' is-scrolled' : '')} style={mood}>
       <Link to="/" className="site-logo serif" aria-label="AMBRE home">
-        AMBRE
+        <img
+          src={theme.dark ? '/assets/brand%20logo%20light.png' : '/assets/brand%20logo.png'}
+          alt="AMBRE"
+          className="site-logo-img"
+        />
       </Link>
 
       <nav className="site-nav" aria-label="Primary">

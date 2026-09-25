@@ -34,7 +34,7 @@ export default function AdminLogin() {
         <span className="adm-orb adm-orb-2" />
         <span className="adm-orb adm-orb-3" />
         <div className="adm-auth-art-inner">
-          <span className="adm-auth-logo serif">AMBRE</span>
+          <img src="/assets/brand%20logo%20light.png" alt="AMBRE" className="adm-auth-logo-img" />
           <h2 className="adm-auth-tagline serif">
             Every order,
             <br />

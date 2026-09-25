@@ -56,8 +56,8 @@ export default function AdminShell({ children, newCount = 0, actions }: Props) {
     <div className="adm">
       <aside className={'adm-side' + (menuOpen ? ' is-open' : '')} aria-label="Admin navigation">
         <div className="adm-brand-row">
-          <Link to="/admin/orders" className="adm-brand serif" onClick={() => setMenuOpen(false)}>
-            AMBRE
+          <Link to="/admin/orders" className="adm-brand" onClick={() => setMenuOpen(false)}>
+            <img src="/assets/brand%20logo%20light.png" alt="AMBRE" className="adm-brand-img" />
           </Link>
           <span className="adm-brand-tag">Admin</span>
           <button className="adm-side-close" onClick={() => setMenuOpen(false)} aria-label="Close menu">

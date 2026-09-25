@@ -31,7 +31,7 @@ export default function AdminGuard({ children }: { children: ReactNode }) {
     return (
       <div className="adm-loader" role="status" aria-live="polite">
         <span className="adm-loader-ring" />
-        <span className="adm-loader-brand serif">AMBRE</span>
+        <img src="/assets/brand%20logo.png" alt="AMBRE" className="adm-loader-logo-img" />
         <span className="adm-loader-text">Checking your session…</span>
       </div>
     )

@@ -54,10 +54,12 @@
   border-top-color: var(--a-accent);
   animation: adm-rotate 0.9s linear infinite;
 }
-.adm-loader-brand {
-  font-size: 30px;
-  letter-spacing: 0.1em;
-  font-weight: 400;
+.adm-loader-logo-img {
+  display: block;
+  height: 56px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
 }
 .adm-loader-text {
   font-size: 13px;
@@ -102,10 +104,16 @@
   padding: 0 10px 22px;
 }
 .adm-brand {
-  font-size: 30px;
-  font-weight: 400;
-  letter-spacing: 0.09em;
+  display: inline-flex;
+  align-items: center;
   line-height: 1;
+}
+.adm-brand-img {
+  display: block;
+  height: 52px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
 }
 .adm-brand-tag {
   padding: 3px 9px;
@@ -1378,10 +1386,12 @@
   display: grid;
   gap: 26px;
 }
-.adm-auth-logo {
-  font-size: 34px;
-  font-weight: 400;
-  letter-spacing: 0.1em;
+.adm-auth-logo-img {
+  display: block;
+  height: 64px;
+  width: auto;
+  max-width: 230px;
+  object-fit: contain;
 }
 .adm-auth-tagline {
   font-size: clamp(38px, 4.6vw, 68px);

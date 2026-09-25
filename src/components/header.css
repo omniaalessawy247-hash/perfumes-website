@@ -24,6 +24,15 @@
   font-weight: 400;
   letter-spacing: 0.08em;
   justify-self: start;
+  display: inline-flex;
+  align-items: center;
+}
+.site-logo-img {
+  display: block;
+  height: 80px;
+  width: auto;
+  max-width: 290px;
+  object-fit: contain;
 }
 .site-nav {
   display: flex;
@@ -106,6 +115,10 @@
   }
   .site-header {
     grid-template-columns: 1fr auto;
+  }
+  .site-logo-img {
+    height: 58px;
+    max-width: 210px;
   }
 }
 
